@@ -12,6 +12,24 @@
         android:theme="@style/Theme.Lab4_iot"
         tools:targetApi="31">
         <activity
+            android:name=".descargarHorarios"
+            android:exported="false" />
+        <activity
+            android:name=".verInformacion"
+            android:exported="false" />
+        <activity
+            android:name=".FlujoTrabajador"
+            android:exported="false" />
+        <activity
+            android:name=".asignarTutoria"
+            android:exported="false" />
+        <activity
+            android:name=".buscarTrabajador"
+            android:exported="false" />
+        <activity
+            android:name=".FlujoTutor"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
