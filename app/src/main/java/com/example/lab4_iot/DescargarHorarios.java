@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class descargarHorarios extends AppCompatActivity {
+public class DescargarHorarios extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
