@@ -32,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
         binding.tutor.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this,FlujoTutor.class);
             startActivity(intent);
-            lanzarNotificacion();
+            lanzarNotificacion("Estás entrando a modo tutor");
+        });
+
+        binding.trabajador.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,FlujoTrabajador.class);
+            startActivity(intent);
+            lanzarNotificacion("Estás entrando a modo empleado");
         });
 
 
@@ -69,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    public void lanzarNotificacion() {
+    public void lanzarNotificacion(String contenttitle) {
         Intent intent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("Estás entrando a modo tutor")
+                .setContentTitle(contenttitle)
                 .setContentText("Disfruta tu instancia")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)

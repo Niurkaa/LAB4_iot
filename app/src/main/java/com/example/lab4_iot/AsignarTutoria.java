@@ -20,6 +20,8 @@ import com.example.lab4_iot.Retrofit.EmployeeRepository;
 import com.example.lab4_iot.databinding.ActivityAsignarTutoriaBinding;
 import com.example.lab4_iot.databinding.ActivityBuscarTrabajadorBinding;
 import com.example.lab4_iot.entity.Employee;
+import com.example.lab4_iot.entity.ListTutorias;
+import com.example.lab4_iot.entity.Tutoria;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +35,8 @@ public class AsignarTutoria extends AppCompatActivity {
     private static String TAG = "flujoAsignarTutor-test";
 
     int citas = 0;
+
+    Tutoria tutoria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +65,8 @@ public class AsignarTutoria extends AppCompatActivity {
 
                         if (employee.getManagerId().toString().equals(texto2)){
                             if (citas<=0){
-
                                 lanzarNotificacion("Asignación de cita correcta");
+                                tutoria = new Tutoria(true,idEmpleado,employee.getManagerId(),"17022002" );
                                 citas++;
                             }else{
                                 lanzarNotificacion("El trabajador ya tiene una cita asignada. Elija otro trabajador");
