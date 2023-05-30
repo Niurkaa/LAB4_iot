@@ -38,4 +38,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/buscar"
+        app:layout_constraintStart_toStartOf="@+id/buscar"
+        app:layout_constraintTop_toBottomOf="@+id/buscar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
