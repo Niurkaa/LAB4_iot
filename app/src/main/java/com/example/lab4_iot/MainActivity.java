@@ -34,17 +34,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             lanzarNotificacion();
         });
+        binding.trabajador.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, FlujoTrabajador.class);
+            startActivity(intent);
+            lanzarNotificacionTrabajador();
+        });
 
 
     }
 
-    String channelId = "channelDefaultPri";
+    String channelId = "channelDefaultHigh";
 
     public void createNotificationChannel() {
         //android.os.Build.VERSION_CODES.O == 26
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId,
-                    "Canal notificaciones default",
+                    "Canal notificaciones high",
                     NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription("Canal para notificaciones con prioridad default");
 
@@ -78,7 +83,25 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Estás entrando a modo tutor")
                 .setContentText("Disfruta tu instancia")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            notificationManager.notify(1, builder.build());
+        }
+    }
+    public void lanzarNotificacionTrabajador(){
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Estás entrando a modo trabajador")
+                .setContentText("Disfruta tu instancia")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
