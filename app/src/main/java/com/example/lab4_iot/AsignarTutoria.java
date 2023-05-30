@@ -44,7 +44,7 @@ public class AsignarTutoria extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         EmployeeRepository employeeRepository = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.34:8080")
+                .baseUrl("http://10.0.2.2:8081")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(EmployeeRepository.class);
 
